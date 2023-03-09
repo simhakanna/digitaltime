@@ -26,8 +26,8 @@ class DigitalTimer extends Component {
   }
 
   dicTime = () => {
-    const {runningStage} = this.state
-    if (!runningStage) {
+    const {runningStage, min} = this.state
+    if (!runningStage && min > 0) {
       this.setState(prev => ({
         min: prev.min - 1,
         setTime: prev.setTime - 1,
@@ -36,8 +36,8 @@ class DigitalTimer extends Component {
   }
 
   incTime = () => {
-    const {runningStage} = this.state
-    if (!runningStage) {
+    const {runningStage, min} = this.state
+    if (!runningStage && min >= 0) {
       this.setState(prev => ({
         min: prev.min + 1,
         setTime: prev.setTime + 1,
@@ -50,9 +50,12 @@ class DigitalTimer extends Component {
     const {runningStage} = this.state
     if (runningStage) {
       this.timeId = setInterval(() => {
-        const {sec} = this.state
+        const {sec, min} = this.state
 
-        if (sec === 0) {
+        if (min === 0 && sec === 0) {
+          clearInterval(this.timeId)
+          this.setState({runningStage: false})
+        } else if (sec === 0) {
           this.setState(prev => ({
             sec: 59,
             min: prev.min - 1,
@@ -68,11 +71,22 @@ class DigitalTimer extends Component {
 
   resetTime = () => {
     clearInterval(this.timeId)
-    this.setState({min: 25, sec: 0, runningStage: false})
+    this.setState({min: 25, sec: 59, runningStage: false})
+  }
+
+  elapsedTime = () => {
+    const {min, sec} = this.state
+    return (
+      <h1 className="minute">
+        {min <= 9 && 0}
+        {min}:{sec <= 9 && 0}
+        {sec}
+      </h1>
+    )
   }
 
   render() {
-    const {runningStage, min, sec, setTime} = this.state
+    const {runningStage, setTime} = this.state
 
     return (
       <div className="bg">
@@ -80,10 +94,7 @@ class DigitalTimer extends Component {
         <div className="down">
           <div className="timer">
             <div className="time">
-              <h1 className="minute">
-                {min}:{sec < 9 && 0}
-                {sec}
-              </h1>
+              {this.elapsedTime()}
               <p className="u-minute">{runningStage ? 'Running' : 'Paused'}</p>
             </div>
           </div>
