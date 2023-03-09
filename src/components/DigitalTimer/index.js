@@ -26,17 +26,23 @@ class DigitalTimer extends Component {
   }
 
   dicTime = () => {
-    this.setState(prev => ({
-      min: prev.min - 1,
-      setTime: prev.setTime - 1,
-    }))
+    const {runningStage} = this.state
+    if (!runningStage) {
+      this.setState(prev => ({
+        min: prev.min - 1,
+        setTime: prev.setTime - 1,
+      }))
+    }
   }
 
   incTime = () => {
-    this.setState(prev => ({
-      min: prev.min + 1,
-      setTime: prev.setTime + 1,
-    }))
+    const {runningStage} = this.state
+    if (!runningStage) {
+      this.setState(prev => ({
+        min: prev.min + 1,
+        setTime: prev.setTime + 1,
+      }))
+    }
   }
 
   runOrPause = async () => {
@@ -62,7 +68,7 @@ class DigitalTimer extends Component {
 
   resetTime = () => {
     clearInterval(this.timeId)
-    this.setState({min: 25, sec: 0})
+    this.setState({min: 25, sec: 0, runningStage: false})
   }
 
   render() {
