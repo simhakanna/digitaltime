@@ -1,0 +1,102 @@
+/* Write your CSS here */
+
+.bg {
+  background-image: linear-gradient(to right #ffffff, #cffcf1);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.down {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timer {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/digital-timer-elapsed-bg.png');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 500px;
+}
+
+.time {
+  background-color: white;
+  border: none;
+  border-radius: 80px;
+  padding: 20px;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.s-p {
+  display: flex;
+  align-items: center;
+}
+
+.icon-s {
+  height: 30px;
+  width: 30px;
+}
+
+.s-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 30px;
+}
+
+.methods {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+}
+
+.t-l-t {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.icon {
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  background-color: transparent;
+}
+
+.but {
+  display: flex;
+}
+.val {
+  background-image: linear-gradient(to right, #cffcf1, #00d9f5);
+  width: 50px;
+  height: 30px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+.minute {
+  height: 10px;
+  margin-bottom: 3px;
+  font-size: 23px;
+  color: #00d9f5;
+  font-weight: 900;
+}
+
+.u-minute {
+  font-size: 15px;
+  font-weight: 700;
+}
