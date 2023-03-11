@@ -77,7 +77,7 @@ class DigitalTimer extends Component {
 
   resetTime = () => {
     clearInterval(this.timeId)
-    this.setState({min: 25, sec: 0, runningStage: false})
+    this.setState({min: 25, sec: 0, runningStage: false, setTime: 25})
   }
 
   elapsedTime = () => {
