@@ -2,7 +2,12 @@ import {Component} from 'react'
 import './index.css'
 
 class DigitalTimer extends Component {
-  state = {runningStage: false, min: 25, sec: 0, setTime: 25}
+  state = {
+    runningStage: false,
+    min: 25,
+    sec: 0,
+    setTime: 25,
+  }
 
   playImg = () => {
     const {runningStage} = this.state
@@ -27,6 +32,7 @@ class DigitalTimer extends Component {
 
   dicTime = () => {
     const {runningStage, min} = this.state
+
     if (!runningStage && min > 0) {
       this.setState(prev => ({
         min: prev.min - 1,
@@ -71,7 +77,7 @@ class DigitalTimer extends Component {
 
   resetTime = () => {
     clearInterval(this.timeId)
-    this.setState({min: 25, sec: 59, runningStage: false})
+    this.setState({min: 25, sec: 0, runningStage: false})
   }
 
   elapsedTime = () => {
